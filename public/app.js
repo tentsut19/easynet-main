@@ -21,7 +21,7 @@ async function initializeLiff() {
     const profile = await liff.getProfile();
 
     // แสดงข้อมูลผู้ใช้
-    // const dataContainer = document.getElementById('data-container');
+    const dataContainer = document.getElementById('data-container');
     // dataContainer.innerHTML = `
     //     <p>UserID: ${profile.userId}</p>
     //     <p>Display Name: ${profile.displayName}</p>
@@ -30,6 +30,8 @@ async function initializeLiff() {
     // `;
 
     try {
+        // https://038e-49-228-176-194.ngrok-free.app
+        // https://tis-report.com/api/v1/workSheet/line
         const response = await fetch('https://tis-report.com/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
@@ -50,23 +52,19 @@ async function initializeLiff() {
 
         // เรียกใช้ LIFF ในการตอบกลับไปยัง Line
         if (liff.isInClient()) {
-            liff.sendMessages([
-                {
-                    type: 'text',
-                    text: 'เปิดใบงานเรียบร้อย\nใบงานเลขที่:' + JSON.stringify(data.workSheetCode)
-                }
-            ]).then(() => {
-                console.log('Message sent');
+            dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
+            setTimeout(() => {
                 liff.closeWindow();
-            }).catch((error) => {
-                console.error('Error sending message:', error);
-                liff.closeWindow();
-            });
+            }, 2000);
         } else {
+            dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
             alert('เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode));
-            liff.closeWindow();
+            setTimeout(() => {
+                liff.closeWindow();
+            }, 2000);
         }
     } catch (error) {
+        alert('เกิดข้อผิดพลาด');
         console.error('API Error:', error);
         liff.closeWindow();
     }
