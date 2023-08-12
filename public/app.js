@@ -53,9 +53,20 @@ async function initializeLiff() {
         // เรียกใช้ LIFF ในการตอบกลับไปยัง Line
         if (liff.isInClient()) {
             dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
-            setTimeout(() => {
+            liff.sendMessages([
+                {
+                    type: 'text',
+                    text: 'เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode)
+                }
+            ]).then(() => {
+                console.log('Message sent');
+                setTimeout(() => {
+                    liff.closeWindow();
+                }, 2000);
+            }).catch((error) => {
+                console.error('Error sending message:', error);
                 liff.closeWindow();
-            }, 2000);
+            });
         } else {
             dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
             alert('เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode));
