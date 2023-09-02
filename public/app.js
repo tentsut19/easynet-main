@@ -12,10 +12,10 @@ async function initializeLiff() {
     await liff.init({ liffId: LIFF_ID });
 
     // ตรวจสอบสถานะการเข้าสู่ระบบ
-    // if (!liff.isLoggedIn()) {
-    //     liff.login();
-    //     return;
-    // }
+    if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+    }
 
     // แสดงปุ่มและกำหนดค่าการคลิก
     const oButton = document.getElementById('o-button');
