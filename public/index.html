@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เปิดใบงาน</title>
+    <!-- เรียกใช้ Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .error-border {
+            border-color: red !important;
+        }
+    </style>
 </head>
 <body>
-    <div id="data-container">
-        <!-- ข้อมูลจาก LIFF จะถูกแสดงที่นี่ -->
-        <h1>กำลังเปิดใบงาน</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        เปิดใบงาน
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div id="div_number" class="form-group" style="display: none;">
+                                <label for="room-number">เลขห้อง:</label>
+                                <input type="text" class="form-control" id="room-number" placeholder="กรอกเลขห้อง">
+                                <small class="text-danger" id="roomNumberError" style="display: none;">กรุณากรอกเลขห้อง</small>
+                            </div><br>
+                            <b id="confirm-label" style="display: none;">มีการสร้างใบงานในวันนี้แล้ว กดยืนยันเพื่อเปิดใบงาน</b><br>
+                            <button type="button" class="btn btn-success" id="confirm-button2" style="display: none;">ยืนยันสร้างใบงาน</button>
+                            <button type="button" class="btn btn-success" id="confirm-button" style="display: none;">ยืนยัน</button>
+                            <button type="button" class="btn btn-link" id="back-button" style="display: none;">กลับ</button>
+                            <button type="button" class="btn btn-primary" id="o-button">เปิดใบงานระดับอาคาร</button>
+                            <button type="button" class="btn btn-info" id="r-button">เปิดใบงานระดับห้อง</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- <button id="api-button">เปิดใบงาน</button> -->
 
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script src="liff-config.js"></script>
