@@ -57,6 +57,7 @@ async function oButtonEvent() {
     confirmLabel.style.display = 'none';
     const confirmButton2 = document.getElementById('confirm-button2');
     confirmButton2.style.display = 'none';
+    document.getElementById('room-number').value = '';
 }
 
 async function backButtonEvent() {
