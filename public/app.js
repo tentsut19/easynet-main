@@ -96,6 +96,7 @@ async function callAPICreateWorkSheet() {
             liff.login();
             return;
         }
+        document.getElementById('overlay').style.display = 'block';
         this.profile = await liff.getProfile();
 
         this.roomNumber = document.getElementById('room-number').value;
@@ -114,6 +115,7 @@ async function callAPICreateWorkSheet() {
                 roomNumber: this.roomNumber
             })
         });
+        document.getElementById('overlay').style.display = 'none';
 
         const dataValidate = await responseValidate.json();
         console.log('API Response:', dataValidate);
@@ -180,6 +182,8 @@ async function callAPICreateWorkSheet2() {
             liff.login();
             return;
         }
+        document.getElementById('overlay').style.display = 'block';
+
         this.profile = await liff.getProfile();
 
         this.roomNumber = document.getElementById('room-number').value;
@@ -198,7 +202,7 @@ async function callAPICreateWorkSheet2() {
                 roomNumber: this.roomNumber
             })
         });
-
+        document.getElementById('overlay').style.display = 'none';
         const data = await response.json();
         console.log('API Response:', data);
 

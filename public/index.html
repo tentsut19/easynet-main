@@ -6,13 +6,50 @@
     <title>เปิดใบงาน</title>
     <!-- เรียกใช้ Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" src="custom.css">
     <style>
         .error-border {
             border-color: red !important;
         }
+        #overlay {
+        background: #ffffff;
+        color: #666666;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 5000;
+        top: 0;
+        left: 0;
+        float: left;
+        text-align: center;
+        padding-top: 4%;
+        opacity: .80;
+        }
+        .spinner {
+            margin: 0 auto;
+            height: 64px;
+            width: 64px;
+            animation: rotate 0.8s infinite linear;
+            border: 5px solid firebrick;
+            border-right-color: transparent;
+            border-radius: 50%;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
+    <div id="overlay" style="display:none;">
+        <div class="spinner"></div>
+        <br/>
+        Loading...
+    </div>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -27,7 +64,7 @@
                                 <input type="text" class="form-control" id="room-number" placeholder="กรอกเลขห้อง">
                                 <small class="text-danger" id="roomNumberError" style="display: none;">กรุณากรอกเลขห้อง</small>
                             </div><br>
-                            <b id="confirm-label" style="display: none;">มีการสร้างใบงานในวันนี้แล้ว กดยืนยันเพื่อเปิดใบงาน</b><br>
+                            <b id="confirm-label" class="text-warning" style="display: none;">มีการสร้างใบงานในวันนี้แล้ว กดยืนยันเพื่อเปิดใบงาน</b><br>
                             <button type="button" class="btn btn-success" id="confirm-button2" style="display: none;">ยืนยันสร้างใบงาน</button>
                             <button type="button" class="btn btn-success" id="confirm-button" style="display: none;">ยืนยัน</button>
                             <button type="button" class="btn btn-link" id="back-button" style="display: none;">กลับ</button>
