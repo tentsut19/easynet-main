@@ -171,6 +171,8 @@ async function callAPICreateWorkSheet() {
             alert('เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode));
         }
     } catch (error) {
+        document.getElementById('overlay').style.display = 'none';
+        alert('เกิดข้อผิดพลาด');
         console.error('API Error:', error);
     }
 }
@@ -227,6 +229,8 @@ async function callAPICreateWorkSheet2() {
             alert('เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode));
         }
     } catch (error) {
+        document.getElementById('overlay').style.display = 'none';
+        alert('เกิดข้อผิดพลาด');
         console.error('API Error:', error);
     }
 }
