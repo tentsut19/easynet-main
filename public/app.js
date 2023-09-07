@@ -12,10 +12,10 @@ async function initializeLiff() {
     await liff.init({ liffId: LIFF_ID });
 
     // ตรวจสอบสถานะการเข้าสู่ระบบ
-    if (!liff.isLoggedIn()) {
-        liff.login();
-        return;
-    }
+    // if (!liff.isLoggedIn()) {
+    //     liff.login();
+    //     return;
+    // }
 
     // แสดงปุ่มและกำหนดค่าการคลิก
     const oButton = document.getElementById('o-button');
@@ -27,7 +27,7 @@ async function initializeLiff() {
     rButton.addEventListener('click', oButtonEvent);
 
     // เรียกใช้ API ดึงข้อมูลผู้ใช้
-    this.profile = await liff.getProfile();
+    // this.profile = await liff.getProfile();
 
     // แสดงข้อมูลผู้ใช้
     const dataContainer = document.getElementById('data-container');
@@ -86,21 +86,26 @@ async function confirmButtonEvent() {
 
 async function callAPICreateWorkSheet() {
     try {
+        var domain = 'https://tis-report.com';
+        if (!liff.isLoggedIn()) {
+            liff.login();
+            return;
+        }
+        this.profile = await liff.getProfile();
+
         this.roomNumber = document.getElementById('room-number').value;
-        const responseValidate = await fetch(this.domain+'/api/v1/workSheet/line/validate', {
+        const responseValidate = await fetch('http://localhost:5000/api/v1/workSheet/line/validate', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                // ข้อมูลที่ต้องการส่งไปยัง API ในรูปแบบ JSON
-                // lineUserId: this.profile.userId,
-                // displayName: this.profile.displayName,
-                // statusMessage: this.profile.statusMessage,
-                // pictureUrl: this.profile.pictureUrl,
-
-                lineUserId: "123",
+                // // ข้อมูลที่ต้องการส่งไปยัง API ในรูปแบบ JSON
+                lineUserId: this.profile.userId,
+                displayName: this.profile.displayName,
+                statusMessage: this.profile.statusMessage,
+                pictureUrl: this.profile.pictureUrl,
                 roomNumber: this.roomNumber
             })
         });
@@ -116,9 +121,10 @@ async function callAPICreateWorkSheet() {
 
             const confirmButton = document.getElementById('confirm-button');
             confirmButton.style.display = 'none';
+            return;
         }
 
-        const response = await fetch(this.domain+'/api/v1/workSheet/line', {
+        const response = await fetch('http://localhost:5000/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
@@ -164,8 +170,15 @@ async function callAPICreateWorkSheet() {
 
 async function callAPICreateWorkSheet2() {
     try {
+        var domain = 'https://tis-report.com';
+        if (!liff.isLoggedIn()) {
+            liff.login();
+            return;
+        }
+        this.profile = await liff.getProfile();
+
         this.roomNumber = document.getElementById('room-number').value;
-        const response = await fetch(this.domain+'/api/v1/workSheet/line', {
+        const response = await fetch('http://localhost:5000/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
