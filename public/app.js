@@ -53,6 +53,10 @@ async function oButtonEvent() {
     const backButton = document.getElementById('back-button');
     backButton.style.display = 'initial';
     backButton.addEventListener('click', backButtonEvent);
+    const confirmLabel = document.getElementById('confirm-label');
+    confirmLabel.style.display = 'none';
+    const confirmButton2 = document.getElementById('confirm-button2');
+    confirmButton2.style.display = 'none';
 }
 
 async function backButtonEvent() {
