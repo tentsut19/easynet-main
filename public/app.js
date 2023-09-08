@@ -151,7 +151,7 @@ async function callAPICreateWorkSheet() {
 
         // เรียกใช้ LIFF ในการตอบกลับไปยัง Line
         if (liff.isInClient()) {
-            dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
+            // dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
             setTimeout(() => {
                 liff.closeWindow();
             }, 2000);
@@ -211,7 +211,7 @@ async function callAPICreateWorkSheet2() {
 
         // เรียกใช้ LIFF ในการตอบกลับไปยัง Line
         if (liff.isInClient()) {
-            dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
+            // dataContainer.innerHTML = '<h1>เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode) + '</h1>';
             setTimeout(() => {
                 liff.closeWindow();
             }, 2000);
