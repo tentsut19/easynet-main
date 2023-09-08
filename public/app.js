@@ -94,6 +94,7 @@ async function callAPICreateWorkSheet() {
             liff.login();
             return;
         }
+        const dataContainer = document.getElementById('data-container');
         document.getElementById('overlay').style.display = 'block';
         this.profile = await liff.getProfile();
 
@@ -183,6 +184,7 @@ async function callAPICreateWorkSheet2() {
             liff.login();
             return;
         }
+        const dataContainer = document.getElementById('data-container');
         document.getElementById('overlay').style.display = 'block';
 
         this.profile = await liff.getProfile();
