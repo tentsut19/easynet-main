@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var roomNumber;
 var profile;
-// var domain = 'http://localhost:8091'
-var domain = 'https://tis-report.com';
 
 async function initializeLiff() {
     await liff.init({ liffId: LIFF_ID });
@@ -100,7 +98,7 @@ async function callAPICreateWorkSheet() {
         this.profile = await liff.getProfile();
 
         this.roomNumber = document.getElementById('room-number').value;
-        const responseValidate = await fetch('http://localhost:5000/api/v1/workSheet/line/validate', {
+        const responseValidate = await fetch('https://tis-report.com/api/v1/workSheet/line/validate', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
@@ -131,7 +129,7 @@ async function callAPICreateWorkSheet() {
             return;
         }
 
-        const response = await fetch('http://localhost:5000/api/v1/workSheet/line', {
+        const response = await fetch('https://tis-report.com/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
@@ -190,7 +188,7 @@ async function callAPICreateWorkSheet2() {
         this.profile = await liff.getProfile();
 
         this.roomNumber = document.getElementById('room-number').value;
-        const response = await fetch('http://localhost:5000/api/v1/workSheet/line', {
+        const response = await fetch('https://tis-report.com/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
