@@ -155,7 +155,7 @@ async function callAPICreateWorkSheet() {
             alert('เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode));
             setTimeout(() => {
                 liff.closeWindow();
-            }, 2000);
+            }, 500);
 
             liff.sendMessages([
                 {
@@ -216,7 +216,7 @@ async function callAPICreateWorkSheet2() {
             alert('เปิดใบงานเรียบร้อย\nใบงานเลขที่: ' + JSON.stringify(data.workSheetCode));
             setTimeout(() => {
                 liff.closeWindow();
-            }, 2000);
+            }, 500);
 
             liff.sendMessages([
                 {
