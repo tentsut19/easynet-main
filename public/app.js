@@ -172,7 +172,8 @@ async function callAPICreateWorkSheet() {
         }
     } catch (error) {
         document.getElementById('overlay').style.display = 'none';
-        alert('เกิดข้อผิดพลาด');
+        // alert('เกิดข้อผิดพลาด');
+        alert(error);
         console.error('API Error:', error);
     }
 }
@@ -230,7 +231,8 @@ async function callAPICreateWorkSheet2() {
         }
     } catch (error) {
         document.getElementById('overlay').style.display = 'none';
-        alert('เกิดข้อผิดพลาด');
+        // alert('เกิดข้อผิดพลาด');
+        alert(error);
         console.error('API Error:', error);
     }
 }
