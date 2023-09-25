@@ -99,7 +99,8 @@ async function callAPICreateWorkSheet() {
     try {
         var domain = 'https://tis-report.com';
         if (!liff.isLoggedIn()) {
-            liff.login();
+            const destinationUrl = window.location.href;
+            liff.login({redirectUri: destinationUrl});
             return;
         }
         const dataContainer = document.getElementById('data-container');
