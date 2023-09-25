@@ -150,7 +150,8 @@ async function callAPICreateWorkSheet() {
                 displayName: this.profile.displayName,
                 statusMessage: this.profile.statusMessage,
                 pictureUrl: this.profile.pictureUrl,
-                roomNumber: this.roomNumber
+                roomNumber: this.roomNumber,
+                userId: document.getElementById('userId').value
             })
         });
 
@@ -211,7 +212,8 @@ async function callAPICreateWorkSheet2() {
                 displayName: this.profile.displayName,
                 statusMessage: this.profile.statusMessage,
                 pictureUrl: this.profile.pictureUrl,
-                roomNumber: this.roomNumber
+                roomNumber: this.roomNumber,
+                userId: document.getElementById('userId').value
             })
         });
         document.getElementById('overlay').style.display = 'none';
