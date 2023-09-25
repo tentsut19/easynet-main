@@ -9,6 +9,14 @@ var profile;
 async function initializeLiff() {
     await liff.init({ liffId: LIFF_ID });
 
+    const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
+    const params = new URLSearchParams(queryString);
+    const userId = params.get('userId');
+    if (userId != null && userId != '') {
+      console.log(userId);
+    }
+    document.getElementById('userId').value = userId;
+
     // ตรวจสอบสถานะการเข้าสู่ระบบ
     // if (!liff.isLoggedIn()) {
     //     liff.login();
