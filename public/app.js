@@ -61,8 +61,8 @@ async function oButtonEvent() {
     backButton.addEventListener('click', backButtonEvent);
     const confirmLabel = document.getElementById('confirm-label');
     confirmLabel.style.display = 'none';
-    const confirmButton2 = document.getElementById('confirm-button2');
-    confirmButton2.style.display = 'none';
+    // const confirmButton2 = document.getElementById('confirm-button2');
+    // confirmButton2.style.display = 'none';
     document.getElementById('room-number').value = '';
 }
 
@@ -79,8 +79,8 @@ async function backButtonEvent() {
     backButton.style.display = 'none';
     const confirmLabel = document.getElementById('confirm-label');
     confirmLabel.style.display = 'none';
-    const confirmButton2 = document.getElementById('confirm-button2');
-    confirmButton2.style.display = 'none';
+    // const confirmButton2 = document.getElementById('confirm-button2');
+    // confirmButton2.style.display = 'none';
 }
 
 async function confirmButtonEvent() {
@@ -103,6 +103,8 @@ async function callAPICreateWorkSheet() {
             liff.login({redirectUri: destinationUrl});
             return;
         }
+        const confirmLabel = document.getElementById('confirm-label');
+        confirmLabel.innerHTML = '';
         const dataContainer = document.getElementById('data-container');
         document.getElementById('overlay').style.display = 'block';
         this.profile = await liff.getProfile();
@@ -127,12 +129,13 @@ async function callAPICreateWorkSheet() {
 
         const dataValidate = await responseValidate.json();
         console.log('API Response:', dataValidate);
-        if(dataValidate.errors && dataValidate.errors.length > 0){
-            const confirmLabel = document.getElementById('confirm-label');
+        if(dataValidate.errorMessage != '' && dataValidate.errorMessage != null){
             confirmLabel.style.display = 'initial';
-            const confirmButton2 = document.getElementById('confirm-button2');
-            confirmButton2.style.display = 'initial';
-            confirmButton2.addEventListener('click', callAPICreateWorkSheet2);
+            confirmLabel.innerHTML = dataValidate.errorMessage;
+
+            // const confirmButton2 = document.getElementById('confirm-button2');
+            // confirmButton2.style.display = 'initial';
+            // confirmButton2.addEventListener('click', callAPICreateWorkSheet2);
 
             const confirmButton = document.getElementById('confirm-button');
             confirmButton.style.display = 'none';
