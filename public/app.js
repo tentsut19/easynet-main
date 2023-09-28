@@ -7,6 +7,7 @@ var roomNumber;
 var profile;
 
 async function initializeLiff() {
+    console.log('--- initializeLiff ---')
     await liff.init({ liffId: LIFF_ID });
 
     const queryString = decodeURIComponent(window.location.search).replace("?liff.state=", "");
@@ -103,6 +104,22 @@ async function callAPICreateWorkSheet() {
             liff.login({redirectUri: destinationUrl});
             return;
         }
+
+        const checkLabel = document.getElementById('check-label');
+        checkLabel.innerHTML = '';
+        var checkedValue = []; 
+        var inputElements = document.getElementsByClassName('form-check-input');
+        for(var i=0; inputElements[i]; ++i){
+            if(inputElements[i].checked){
+                checkedValue.push(inputElements[i].value);
+            }
+        }
+        console.log(checkedValue)
+        if(checkedValue.length == 0){
+            checkLabel.innerHTML = 'กรูณาเลือกประเภทการเปิดใบงาน';
+            return;
+        }
+
         const confirmLabel = document.getElementById('confirm-label');
         confirmLabel.innerHTML = '';
         const dataContainer = document.getElementById('data-container');
@@ -155,7 +172,8 @@ async function callAPICreateWorkSheet() {
                 statusMessage: this.profile.statusMessage,
                 pictureUrl: this.profile.pictureUrl,
                 roomNumber: this.roomNumber,
-                userId: document.getElementById('userId').value
+                userId: document.getElementById('userId').value,
+                workSheetTypeList: checkedValue
             })
         });
 
