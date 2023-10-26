@@ -29,9 +29,9 @@ async function initializeLiff() {
     oButton.style.display = 'initial';
     oButton.addEventListener('click', callAPICreateWorkSheet);
 
-    const rButton = document.getElementById('r-button');
-    rButton.style.display = 'initial';
-    rButton.addEventListener('click', oButtonEvent);
+    // const rButton = document.getElementById('r-button');
+    // rButton.style.display = 'initial';
+    // rButton.addEventListener('click', oButtonEvent);
 
     // เรียกใช้ API ดึงข้อมูลผู้ใช้
     // this.profile = await liff.getProfile();
@@ -51,9 +51,9 @@ async function oButtonEvent() {
     const divNumber = document.getElementById('div_number');
     divNumber.style.display = 'initial';
     const oButton = document.getElementById('o-button');
-    const rButton = document.getElementById('r-button');
     oButton.style.display = 'none';
-    rButton.style.display = 'none';
+    // const rButton = document.getElementById('r-button');
+    // rButton.style.display = 'none';
     const confirmButton = document.getElementById('confirm-button');
     confirmButton.style.display = 'initial';
     confirmButton.addEventListener('click', confirmButtonEvent);
@@ -71,9 +71,9 @@ async function backButtonEvent() {
     const divNumber = document.getElementById('div_number');
     divNumber.style.display = 'none';
     const oButton = document.getElementById('o-button');
-    const rButton = document.getElementById('r-button');
     oButton.style.display = 'initial';
-    rButton.style.display = 'initial';
+    // const rButton = document.getElementById('r-button');
+    // rButton.style.display = 'initial';
     const confirmButton = document.getElementById('confirm-button');
     confirmButton.style.display = 'none';
     const backButton = document.getElementById('back-button');
