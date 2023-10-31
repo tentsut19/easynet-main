@@ -98,7 +98,6 @@ async function confirmButtonEvent() {
 
 async function callAPICreateWorkSheet() {
     try {
-        var domain = 'https://tis-report.com';
         if (!liff.isLoggedIn()) {
             const destinationUrl = window.location.href;
             liff.login({redirectUri: destinationUrl});
@@ -127,7 +126,7 @@ async function callAPICreateWorkSheet() {
         this.profile = await liff.getProfile();
 
         this.roomNumber = document.getElementById('room-number').value;
-        const responseValidate = await fetch('https://tis-report.com/api/v1/workSheet/line/validate', {
+        const responseValidate = await fetch('https://cabsat-api.easynet.co.th/api/v1/workSheet/line/validate', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
@@ -159,7 +158,7 @@ async function callAPICreateWorkSheet() {
             return;
         }
 
-        const response = await fetch('https://tis-report.com/api/v1/workSheet/line', {
+        const response = await fetch('https://cabsat-api.easynet.co.th/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
@@ -211,7 +210,6 @@ async function callAPICreateWorkSheet() {
 
 async function callAPICreateWorkSheet2() {
     try {
-        var domain = 'https://tis-report.com';
         if (!liff.isLoggedIn()) {
             liff.login();
             return;
@@ -222,7 +220,7 @@ async function callAPICreateWorkSheet2() {
         this.profile = await liff.getProfile();
 
         this.roomNumber = document.getElementById('room-number').value;
-        const response = await fetch('https://tis-report.com/api/v1/workSheet/line', {
+        const response = await fetch('https://cabsat-api.easynet.co.th/api/v1/workSheet/line', {
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // หากต้องการส่ง Access Token
