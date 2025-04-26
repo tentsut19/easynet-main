@@ -2,8 +2,8 @@
 const LIFF_ID = '2000830185-WBjmPELz'; // prod
 
 const PROD = true;
-const DOMAIN = "https://test.nhamaew.net/";
-const PATCH_DELETE_WORKSHEET = DOMAIN+"api/v1/workSheet/delete/";
+const DOMAIN = "https://pcern352ol.execute-api.ap-southeast-1.amazonaws.com/";
+const PATCH_DELETE_WORKSHEET = DOMAIN+"cancel-worksheet";
 
 var profileTest = {
     userId:'U88ca6af84181b2f92c62f50ab4b5da52',

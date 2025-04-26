@@ -8,7 +8,7 @@ var profile;
 async function initializeLiff() {
     try {
         document.getElementById("overlay").style.display = "block";
-        
+
         console.log('--- initializeLiff ---')
         await liff.init({ liffId: LIFF_ID });
 
@@ -41,16 +41,14 @@ async function cancelWorkSheet(workSheetId){
         var workSheetId = urlParams.get('workSheetId');
         var workSheetIdValue = decodeURIComponent(workSheetId);
 
-        const response = await fetch(PATCH_DELETE_WORKSHEET+workSheetIdValue, {
-            method: 'PATCH',
+        const response = await fetch(PATCH_DELETE_WORKSHEET, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                lineUserId: profile.userId,
-                displayName: profile.displayName,
-                statusMessage: profile.statusMessage,
-                pictureUrl: profile.pictureUrl
+                workSheetId: workSheetIdValue,
+                lineUserId: profile.userId
             })
         });
 
